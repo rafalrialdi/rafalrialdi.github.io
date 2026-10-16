@@ -1,4 +1,5 @@
 backend:
+app_title: Admin Toko Bunga Plum
   name: github
   repo: rafalrialdi/rafalrialdi.github.io
   branch: main
