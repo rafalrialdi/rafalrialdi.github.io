@@ -1,0 +1,54 @@
+backend:
+  name: github
+  repo: rafalrialdi/rafalrialdi.github.io
+  branch: main
+  base_url: https://sveltia-cms-auth.rafalrialdi71.workers.dev
+
+# Foto yang diunggah lewat admin disimpan di folder ini.
+media_folder: assets/img
+public_folder: assets/img
+
+collections:
+  - name: bunga
+    label: Katalog Bunga
+    label_singular: Bunga
+    folder: data/bunga          # satu file JSON per bunga
+    create: true
+    extension: json
+    format: json
+    slug: "{{slug}}"            # nama file dibuat otomatis dari kolom "nama", dan menjadi id bunga
+    summary: "{{nama}}"
+    fields:
+      - { label: Nama Bunga, name: nama, widget: string }
+      - label: Kategori
+        name: kategori
+        widget: select
+        options:
+          - Hand Bouquet
+          - Meja & Vas
+          - Bunga Papan Modern
+          - Wisuda & Wedding
+          - Anggrek Spesial
+      - { label: "Harga (rupiah, angka saja)", name: harga, widget: number, value_type: int, min: 0 }
+      - { label: "Harga Coret (isi hanya bila ada promo)", name: harga_coret, widget: number, value_type: int, min: 0, required: false }
+      - { label: "Label di Foto (contoh: Favorit, Dipetik Segar)", name: label, widget: string, required: false }
+      - { label: Kode Produk, name: kode, widget: string, required: false }
+      - { label: Tersedia, name: tersedia, widget: boolean, default: true }
+      - { label: "Tampilkan di Homepage (Koleksi Favorit)", name: unggulan, widget: boolean, default: false }
+      - { label: Deskripsi, name: deskripsi, widget: text }
+      - label: Pilihan Ukuran
+        name: ukuran
+        widget: list
+        required: false
+        summary: "{{fields.nama}}"
+        fields:
+          - { label: "Nama Ukuran (contoh: S (Standard))", name: nama, widget: string }
+          - { label: "Keterangan (contoh: 10 Tangkai)", name: keterangan, widget: string }
+      - { label: Komposisi Flora, name: komposisi, widget: text, required: false }
+      - { label: Termasuk dalam Pesanan, name: termasuk, widget: text, required: false }
+      - { label: Waktu dan Jadwal Pemesanan, name: jadwal, widget: text, required: false }
+      - label: "Foto (foto pertama menjadi foto utama)"
+        name: foto
+        widget: list
+        min: 1
+        field: { label: Foto, name: item, widget: image }
