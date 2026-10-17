@@ -1,12 +1,13 @@
 backend:
-app_title: Admin Toko Bunga Plum
-  name: github
+
+  name: github 
+  app_title: Admin Toko Bunga Plum
   repo: rafalrialdi/rafalrialdi.github.io
   branch: main
   base_url: https://sveltia-cms-auth.rafalrialdi71.workers.dev
 
 # Foto yang diunggah lewat admin disimpan di folder ini.
-media_folder: assets/img
+media_folder: public/assets/img
 public_folder: assets/img
 
 collections:
